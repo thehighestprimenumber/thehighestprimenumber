@@ -1,0 +1,206 @@
+{
+  "personal": {
+    "name": "Marina Olivella",
+    "title": "Senior Software Engineer",
+    "linkedin": "www.linkedin.com/in/marina-olivella",
+    "website": "https://thehighestprimenumber.github.io/thehighestprimenumber/",
+    "summary": "Dynamic Senior Software Engineer with 8+ years of experience building scalable, impactful systems across climate tech and fintech. Combines deep technical proficiency with strong collaboration and project leadership skills. Proven success in improving team processes, enhancing documentation, and delivering reliable, maintainable software at scale.",
+    "summaryExtended": "Equally comfortable architecting backend systems or creating polished, accessible front-end experiences using React, TypeScript, Node.js, and AWS. Passionate about using technology to drive social and environmental impact and continuously improving how teams deliver meaningful digital products. Committed to innovation, experimentation, and thoughtful engineering that serves real human needs."
+  },
+  "languages": [
+    { "name": "Spanish", "level": "Native" },
+    { "name": "English", "level": "Bilingual" },
+    { "name": "Portuguese", "level": "Intermediate" }
+  ],
+  "softSkills": [
+    "Leadership",
+    "Mentoring",
+    "Collaboration",
+    "Communication",
+    "Coordination"
+  ],
+  "experience": [
+    {
+      "id": "open-earth",
+      "company": "Open Earth Foundation",
+      "role": "Software Engineer",
+      "period": "July 2024 - November 2025",
+      "startDate": "2024-07",
+      "endDate": "2025-11",
+      "achievements": [
+        {
+          "headline": "Re-architected a monolithic GHG (Greenhouse Gas) Inventory system into a modular app store platform",
+          "description": "Transformed the GHG Inventory into one of several reusable, plug-and-play apps, enabling multiple independent applications to be developed and integrated within the web application. Established a scalable application framework for future expansion."
+        },
+        {
+          "headline": "Created a core components library using Figma's MCP",
+          "description": "Created a core components library using Figma's MCP, enabling the creation of reusable components for the web application. This library is used by the entire team to create new features and applications."
+        },
+        {
+          "headline": "Developed a React proof-of-concept (PoC) template leveraging the company's frontend components library",
+          "description": "Created a library of core components to be used in the development of PoCs, ensuring consistency across teams. Successfully delivered a production-grade PoC using the new template, improving turnaround time for experimental feature development."
+        }
+      ],
+      "technologies": ["JavaScript", "TypeScript", "React", "SQL", "AWS"]
+    },
+    {
+      "id": "truenorth",
+      "company": "TrueNorth",
+      "role": "Senior Software Engineer",
+      "period": "August 2023 - January 2024",
+      "startDate": "2023-08",
+      "endDate": "2024-01",
+      "achievements": [
+        {
+          "headline": "Resolved critical race condition in credit card payment processing system",
+          "description": "Encountered and resolved a critical race condition in the credit card payment processing system. Developed proof-of-concepts using Kinesis and AWS SQS FIFO to mitigate the issue and implemented the chosen solution, enhancing system reliability and establishing a best practice company-wide."
+        },
+        {
+          "headline": "Implemented innovative solution utilizing OpenSearch aliases for zero-downtime index updates",
+          "description": "Utilized runtime configuration settings, facilitated by AWS Systems Manager, to add new fields to OpenSearch indices without downtime. Successfully modified 50 million documents, ensuring compliance with SLA agreements and minimizing costs. , ElastiCache, AppConfig, SSM, Lambda, CloudFormation, SQS, EC2, Cloudwatch, CodePipeline, Secrets Manager, Eventbridge, Kinesis, OpenSearch"
+        }
+      ],
+      "technologies": ["Clojure", "ClojureScript", "AWS"]
+    },
+    {
+      "id": "cnote",
+      "company": "CNote",
+      "role": "Lead Backend Developer",
+      "period": "August 2020 - July 2023",
+      "startDate": "2020-08",
+      "endDate": "2023-07",
+      "achievements": [
+        {
+          "headline": "Led the integration of a new product line within the existing codebase",
+          "description": "Focused on introducing reusable components and automation to ensure seamless integration while maintaining code quality and production stability."
+        },
+        {
+          "headline": "Created comprehensive onboarding documentation",
+          "description": "Created a day's worth of onboarding company that a dozen team members used on their first week, including the new CTO."
+        },
+        {
+          "headline": "Identified and addressed performance bottlenecks in database queries",
+          "description": "Conducted extensive code refactoring and restructuring, resulting in improved system performance and reduced operational costs."
+        }
+      ],
+      "technologies": ["JavaScript", "TypeScript", "React", "SQL"]
+    },
+    {
+      "id": "tech-meeples",
+      "company": "Tech Meeples",
+      "role": "Full Stack Developer",
+      "period": "November 2019 - January 2021",
+      "startDate": "2019-11",
+      "endDate": "2021-01",
+      "achievements": [
+        {
+          "headline": "Built Learning Management System from scratch",
+          "description": "Our team was tasked with building a Learning Management System from scratch. I designed the database structure, implemented functionalities such as test taking and live webinars. We used Firebase for authentication, database and cloud functions and Twilio for video sessions."
+        }
+      ],
+      "technologies": [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "GatsbyJS",
+        "Firebase",
+        "Firestore",
+        "Contentful",
+        "GraphQL",
+        "NoSQL"
+      ]
+    },
+    {
+      "id": "xubio-lead",
+      "company": "Xubio",
+      "role": "Team Leader and Developer",
+      "period": "May 2019 - November 2019",
+      "startDate": "2019-05",
+      "endDate": "2019-11",
+      "achievements": [
+        {
+          "headline": "Led and trained a team of developers",
+          "description": "Ensured adherence to best practices and fostered collaboration on solution designs."
+        },
+        {
+          "headline": "Contributed to product meetings with functional analysis",
+          "description": "Provided functional analysis and proposed innovative solutions."
+        },
+        {
+          "headline": "Conducted maintenance on proprietary framework",
+          "description": "Orchestrated server migrations and upgrades."
+        },
+        {
+          "headline": "Oversaw the entire product's lifecycle",
+          "description": "From ideation to deployment."
+        },
+        {
+          "headline": "Led codebase refactor for international expansion",
+          "description": "Refactored codebase to support international expansion."
+        }
+      ],
+      "technologies": ["JavaScript", "TypeScript", "SQL", "AWS"]
+    },
+    {
+      "id": "xubio-dev",
+      "company": "Xubio",
+      "role": "Java + JavaScript Developer",
+      "period": "October 2018 - May 2019",
+      "startDate": "2018-10",
+      "endDate": "2019-05",
+      "achievements": [
+        {
+          "headline": "Development and maintenance of Java + Javascript codebase",
+          "description": "Maintained and developed features for the existing codebase."
+        }
+      ],
+      "technologies": ["Java", "JavaScript", "SQL"]
+    },
+    {
+      "id": "komodo",
+      "company": "Komodo Platform",
+      "role": "Developer",
+      "period": "July 2018 - October 2018",
+      "startDate": "2018-07",
+      "endDate": "2018-10",
+      "achievements": [
+        {
+          "headline": "Implemented Byzantine-Fault tolerant consensus algorithm",
+          "description": "Implemented a Byzantine-Fault tolerant consensus algorithm for an upcoming cryptocurrency (unreleased)."
+        }
+      ],
+      "technologies": ["C++"]
+    },
+    {
+      "id": "cognisys",
+      "company": "Cognisys",
+      "role": "Back End Developer",
+      "period": "December 2017 - June 2018",
+      "startDate": "2017-12",
+      "endDate": "2018-06",
+      "achievements": [
+        {
+          "headline": "Development and maintenance of systems",
+          "description": "Development and maintenance of systems in Java, PL/SQL."
+        }
+      ],
+      "technologies": ["Java", "SQL"]
+    },
+    {
+      "id": "glotools",
+      "company": "Glotools",
+      "role": "Android Developer",
+      "period": "July 2017 - December 2017",
+      "startDate": "2017-07",
+      "endDate": "2017-12",
+      "achievements": [
+        {
+          "headline": "Native Android apps support",
+          "description": "Native Android apps support."
+        }
+      ],
+      "technologies": ["Android", "Java", "SQL"]
+    }
+  ]
+}
+
