@@ -3,10 +3,10 @@
  * Splits email into parts and encodes them
  */
 export function obfuscateEmail(email: string): string {
-  const [localPart, domain] = email.split('@');
+  const [localPart, domain] = email.split("@");
   // Encode using simple character code shifting (reversible)
-  const encodedLocal = btoa(localPart).split('').reverse().join('');
-  const encodedDomain = btoa(domain).split('').reverse().join('');
+  const encodedLocal = btoa(localPart).split("").reverse().join("");
+  const encodedDomain = btoa(domain).split("").reverse().join("");
   return `${encodedLocal}@${encodedDomain}`;
 }
 
@@ -14,9 +14,9 @@ export function obfuscateEmail(email: string): string {
  * Deobfuscate email address
  */
 export function deobfuscateEmail(obfuscated: string): string {
-  const [encodedLocal, encodedDomain] = obfuscated.split('@');
-  const localPart = atob(encodedLocal.split('').reverse().join(''));
-  const domain = atob(encodedDomain.split('').reverse().join(''));
+  const [encodedLocal, encodedDomain] = obfuscated.split("@");
+  const localPart = atob(encodedLocal.split("").reverse().join(""));
+  const domain = atob(encodedDomain.split("").reverse().join(""));
   return `${localPart}@${domain}`;
 }
 
@@ -37,6 +37,5 @@ export function getEmail(): string {
     String.fromCharCode(46), // '.'
     String.fromCharCode(99, 111, 109), // 'com'
   ];
-  return parts.join('');
+  return parts.join("");
 }
-

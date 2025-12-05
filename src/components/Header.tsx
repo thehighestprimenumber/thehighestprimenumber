@@ -1,9 +1,4 @@
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Container,
-} from "@mui/material";
+import { AppBar, Toolbar, Typography, Container } from "@mui/material";
 import { resume } from "../utils/resumeData";
 import DownloadPdfButton from "./DownloadPdfButton";
 
@@ -45,4 +40,3 @@ export default function Header() {
     </AppBar>
   );
 }
-

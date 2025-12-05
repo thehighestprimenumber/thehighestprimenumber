@@ -4,7 +4,7 @@ An interactive resume website showcasing professional experience, technologies, 
 
 ## Features
 
-- 📋 **Unified Resume View**: Single-page Resume View**: Single-page layout with smooth scrolling between sections
+- 📋 **Unified Resume View**: Single-page Resume View\*\*: Single-page layout with smooth scrolling between sections
 - 🎯 **Professional Summary**: Overview of experience and expertise
 - 💻 **Technology Experience**: Progress bars showing years of experience with each technology, sorted alphabetically
 - 📅 **Chronological Timeline**: Detailed work experience with achievements, technologies, and time periods
@@ -29,7 +29,7 @@ An interactive resume website showcasing professional experience, technologies, 
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 - Google reCAPTCHA v3 Site Key (for email protection)
 
@@ -61,6 +61,7 @@ The site will be available at `http://localhost:5173`
 **For GitHub Pages deployment**, see [GITHUB_SETUP.md](./GITHUB_SETUP.md) for detailed instructions on adding the reCAPTCHA secret to GitHub.
 
 **For local development**:
+
 1. Go to [Google reCAPTCHA Admin Console](https://www.google.com/recaptcha/admin/create)
 2. Create a new site with **reCAPTCHA v3**
 3. Add `localhost` to the domains
@@ -94,6 +95,7 @@ src/
 ## Customization
 
 All resume content is stored in `data/resume.json`. You can easily update:
+
 - Personal information (name, email, LinkedIn, summary)
 - Work experience (roles, companies, periods, achievements, technologies)
 - Skills are automatically generated from technologies used in work experience
@@ -101,6 +103,7 @@ All resume content is stored in `data/resume.json`. You can easily update:
 ### Adding Technologies
 
 Technologies are automatically extracted from the `technologies` array in each work experience entry. Simply add technology names to the `technologies` array for each role, and they will:
+
 - Appear in the Technologies section with calculated years of experience
 - Be clickable to show all roles where they were used
 - Appear in the Timeline view with experience badges
@@ -114,7 +117,7 @@ The site uses **JSON → Markdown → PDF conversion** - it reads your resume da
 ✅ **Single source of truth** - Your JSON file is the master document  
 ✅ **Consistency** - PDF always matches your website  
 ✅ **Easy updates** - Just edit the JSON file  
-✅ **ATS-friendly** - Clean, text-based PDF with proper structure  
+✅ **ATS-friendly** - Clean, text-based PDF with proper structure
 
 ### How It Works
 
@@ -141,6 +144,7 @@ Simply edit `data/resume.json` to update both the website and PDF. All changes a
 ## Deployment
 
 Build the project and deploy the `dist` folder to any static hosting service:
+
 - Vercel
 - Netlify
 - GitHub Pages

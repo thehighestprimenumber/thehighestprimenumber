@@ -68,4 +68,3 @@ export default function BottomNav({ onScrollToSection }: BottomNavProps) {
     </Paper>
   );
 }
-

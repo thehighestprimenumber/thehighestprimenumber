@@ -20,12 +20,12 @@ export default function ProtectedEmailLink() {
     try {
       // Execute reCAPTCHA
       const token = await executeRecaptcha("reveal_email");
-      
+
       // Verify token (in a real app, you'd send this to your backend)
       // For now, we'll just reveal the email after successful captcha
       // In production, you should verify the token server-side
       console.log("reCAPTCHA token:", token);
-      
+
       setEmailRevealed(true);
     } catch (error) {
       console.error("reCAPTCHA error:", error);
@@ -73,4 +73,3 @@ export default function ProtectedEmailLink() {
     </Button>
   );
 }
-

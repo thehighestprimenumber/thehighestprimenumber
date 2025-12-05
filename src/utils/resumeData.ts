@@ -1,19 +1,19 @@
-import resumeData from '../../data/resume.json'
+import resumeData from "../../data/resume.json";
 
 export interface Achievement {
-  headline: string
-  description: string
+  headline: string;
+  description: string;
 }
 
 export interface Experience {
-  id: string
-  company: string
-  role: string
-  period: string
-  startDate: string
-  endDate: string
-  achievements: Achievement[]
-  technologies: string[]
+  id: string;
+  company: string;
+  role: string;
+  period: string;
+  startDate: string;
+  endDate: string;
+  achievements: Achievement[];
+  technologies: string[];
 }
 
 export interface ResumeData {
@@ -30,7 +30,6 @@ export interface ResumeData {
   experience: Experience[];
 }
 
-export const resume: ResumeData = resumeData as ResumeData
+export const resume: ResumeData = resumeData as ResumeData;
 
-export default resume
-
+export default resume;

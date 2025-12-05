@@ -15,4 +15,3 @@ export function GitHubIcon(props: SvgIconProps) {
     </SvgIcon>
   );
 }
-

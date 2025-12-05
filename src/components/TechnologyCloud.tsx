@@ -1,37 +1,41 @@
-import { useState } from 'react'
-import { Box, Tooltip, Typography, LinearProgress } from '@mui/material'
-import { getTechnologiesByExperience, formatExperience } from '../utils/techExperience'
+import { useState } from "react";
+import { Box, Tooltip, Typography, LinearProgress } from "@mui/material";
+import {
+  getTechnologiesByExperience,
+  formatExperience,
+} from "../utils/techExperience";
 
 interface TechnologyCloudProps {
-  onTechClick: (tech: string) => void
+  onTechClick: (tech: string) => void;
 }
 
 export default function TechnologyCloud({ onTechClick }: TechnologyCloudProps) {
-  const technologies = getTechnologiesByExperience()
-  const [hoveredTech, setHoveredTech] = useState<string | null>(null)
+  const technologies = getTechnologiesByExperience();
+  const [hoveredTech, setHoveredTech] = useState<string | null>(null);
 
   // Sort alphabetically
   const sortedTechnologies = [...technologies].sort((a, b) =>
     a.technology.localeCompare(b.technology)
-  )
+  );
 
   // Calculate max years for progress bar scaling
-  const maxYears = Math.max(...technologies.map(t => t.years))
+  const maxYears = Math.max(...technologies.map((t) => t.years));
 
   return (
     <Box>
       <Box
         sx={{
-          display: 'grid',
-          gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' },
+          display: "grid",
+          gridTemplateColumns: { xs: "1fr", lg: "1fr 1fr" },
           gap: 2,
           pt: 2,
           pb: 4,
         }}
       >
         {sortedTechnologies.map((tech) => {
-          const progressValue = maxYears > 0 ? (tech.years / maxYears) * 100 : 0
-          const isHovered = hoveredTech === tech.technology.toLowerCase()
+          const progressValue =
+            maxYears > 0 ? (tech.years / maxYears) * 100 : 0;
+          const isHovered = hoveredTech === tech.technology.toLowerCase();
 
           return (
             <Box key={tech.technology}>
@@ -133,5 +137,5 @@ export default function TechnologyCloud({ onTechClick }: TechnologyCloudProps) {
         })}
       </Box>
     </Box>
-  )
+  );
 }

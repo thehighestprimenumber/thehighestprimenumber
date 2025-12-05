@@ -1,5 +1,5 @@
-import jsPDF from 'jspdf'
-import { resume } from './resumeData'
+import jsPDF from "jspdf";
+import { resume } from "./resumeData";
 import { getTechnologiesByExperience } from "./techExperience";
 import { getEmail } from "./emailObfuscation";
 
@@ -47,8 +47,8 @@ export async function generatePDFFromText(): Promise<void> {
         align === "center"
           ? pageWidth / 2
           : align === "right"
-          ? pageWidth - margin
-          : margin;
+            ? pageWidth - margin
+            : margin;
 
       doc.text(line, xPosition, yPosition, { align });
       yPosition += lineHeight;
@@ -185,4 +185,3 @@ export async function generatePDFFromText(): Promise<void> {
   // Save PDF
   doc.save(`${personal.name.replace(" ", "_")}_Resume.pdf`);
 }
-

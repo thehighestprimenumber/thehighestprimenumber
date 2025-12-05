@@ -1,12 +1,5 @@
-import { useState } from 'react'
-import {
-  Box,
-  Paper,
-  List,
-  ListItem,
-  Typography,
-  Stack,
-} from "@mui/material";
+import { useState } from "react";
+import { Box, Paper, List, ListItem, Typography, Stack } from "@mui/material";
 import { User, Code, Clock, Mail, Globe } from "lucide-react";
 import { resume } from "../utils/resumeData";
 import TechnologyCloud from "./TechnologyCloud";
