@@ -43,10 +43,14 @@ export default function TechnologyCloud({ onTechClick }: TechnologyCloudProps) {
                       {formatExperience(tech.years)} experience
                     </Typography>
                     <Typography variant="caption" display="block">
-                      Used at {tech.companies.length}{' '}
-                      {tech.companies.length === 1 ? 'company' : 'companies'}
+                      Used at {tech.companies.length}{" "}
+                      {tech.companies.length === 1 ? "company" : "companies"}
                     </Typography>
-                    <Typography variant="caption" fontStyle="italic" display="block">
+                    <Typography
+                      variant="caption"
+                      fontStyle="italic"
+                      display="block"
+                    >
                       Click to see details
                     </Typography>
                   </Box>
@@ -56,56 +60,67 @@ export default function TechnologyCloud({ onTechClick }: TechnologyCloudProps) {
               >
                 <Box
                   sx={{
-                    display: 'flex',
-                    alignItems: 'center',
+                    display: "flex",
+                    alignItems: "center",
                     gap: 2,
-                    cursor: 'pointer',
+                    cursor: "pointer",
                     p: 1.5,
-                    borderRadius: '8px',
-                    transition: 'all 0.2s',
-                    bgcolor: isHovered ? 'rgba(59, 130, 246, 0.05)' : 'transparent',
-                    '&:hover': {
-                      bgcolor: 'rgba(59, 130, 246, 0.1)',
+                    borderRadius: "8px",
+                    transition: "all 0.2s",
+                    bgcolor: isHovered
+                      ? "rgba(59, 130, 246, 0.05)"
+                      : "transparent",
+                    "&:hover": {
+                      bgcolor: "rgba(59, 130, 246, 0.1)",
                     },
                   }}
-                  onMouseEnter={() => setHoveredTech(tech.technology.toLowerCase())}
+                  onMouseEnter={() =>
+                    setHoveredTech(tech.technology.toLowerCase())
+                  }
                   onMouseLeave={() => setHoveredTech(null)}
                   onClick={() => onTechClick(tech.technology)}
                 >
                   <Typography
                     sx={{
-                      minWidth: { xs: '120px', lg: '150px' },
-                      color: 'text.primary',
+                      minWidth: { xs: "100px", sm: "120px", lg: "150px" },
+                      color: "text.primary",
                       fontWeight: 500,
-                      fontSize: '0.95rem',
+                      fontSize: { xs: "0.875rem", sm: "0.95rem" },
                       flexShrink: 0,
                     }}
                   >
                     {tech.technology}
                   </Typography>
-                  <Box sx={{ flex: 1, minWidth: 0, display: 'flex', alignItems: 'center' }}>
+                  <Box
+                    sx={{
+                      flex: 1,
+                      minWidth: 0,
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
                     <LinearProgress
                       variant="determinate"
                       value={progressValue}
                       sx={{
-                        width: '100%',
-                        height: 8,
-                        borderRadius: '4px',
-                        bgcolor: 'rgba(59, 130, 246, 0.1)',
-                        '& .MuiLinearProgress-bar': {
-                          borderRadius: '4px',
-                          bgcolor: 'primary.main',
+                        width: "100%",
+                        height: { xs: 6, sm: 8 },
+                        borderRadius: "4px",
+                        bgcolor: "rgba(59, 130, 246, 0.1)",
+                        "& .MuiLinearProgress-bar": {
+                          borderRadius: "4px",
+                          bgcolor: "primary.main",
                         },
                       }}
                     />
                   </Box>
                   <Typography
                     sx={{
-                      minWidth: '80px',
-                      textAlign: 'right',
-                      color: 'text.secondary',
-                      fontSize: '0.875rem',
-                      fontFamily: 'monospace',
+                      minWidth: { xs: "60px", sm: "80px" },
+                      textAlign: "right",
+                      color: "text.secondary",
+                      fontSize: { xs: "0.75rem", sm: "0.875rem" },
+                      fontFamily: "monospace",
                       flexShrink: 0,
                     }}
                   >
@@ -114,7 +129,7 @@ export default function TechnologyCloud({ onTechClick }: TechnologyCloudProps) {
                 </Box>
               </Tooltip>
             </Box>
-          )
+          );
         })}
       </Box>
     </Box>

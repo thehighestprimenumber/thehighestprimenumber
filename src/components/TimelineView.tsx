@@ -31,7 +31,7 @@ export default function TimelineView({ onTechClick }: TimelineViewProps) {
               border: "1px solid",
               borderColor: "#2a2a2a",
               borderRadius: "12px",
-              p: 4,
+              p: { xs: 2, sm: 3, md: 4 },
               transition: "all 0.3s",
               "&:hover": {
                 borderColor: "primary.main",
@@ -44,18 +44,29 @@ export default function TimelineView({ onTechClick }: TimelineViewProps) {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "flex-start",
-                mb: 4,
+                mb: { xs: 3, md: 4 },
                 flexWrap: "wrap",
                 gap: 2,
               }}
             >
-              <Box>
-                <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>
+              <Box sx={{ flex: 1, minWidth: { xs: "100%", sm: "auto" } }}>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: 700,
+                    mb: 1,
+                    fontSize: { xs: "1.25rem", sm: "1.5rem" },
+                  }}
+                >
                   {exp.role}
                 </Typography>
                 <Typography
                   variant="h6"
-                  sx={{ color: "primary.main", fontWeight: 500 }}
+                  sx={{
+                    color: "primary.main",
+                    fontWeight: 500,
+                    fontSize: { xs: "1rem", sm: "1.25rem" },
+                  }}
                 >
                   {exp.company}
                 </Typography>
@@ -66,29 +77,41 @@ export default function TimelineView({ onTechClick }: TimelineViewProps) {
                   color: "text.secondary",
                   fontFamily: "monospace",
                   whiteSpace: "nowrap",
+                  fontSize: { xs: "0.7rem", sm: "0.75rem" },
                 }}
               >
                 {exp.period}
               </Typography>
             </Box>
 
-            <Stack gap={3} sx={{ mb: 4 }}>
+            <Stack gap={{ xs: 2, md: 3 }} sx={{ mb: { xs: 3, md: 4 } }}>
               {exp.achievements.map((achievement, achIdx) => (
                 <Box
                   key={achIdx}
                   sx={{
-                    pl: 3,
+                    pl: { xs: 2, sm: 3 },
                     borderLeft: "3px solid",
                     borderColor: "primary.main",
                     pb: 1,
                   }}
                 >
-                  <Typography variant="h6" sx={{ fontWeight: 600, mb: 1.5 }}>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontWeight: 600,
+                      mb: 1.5,
+                      fontSize: { xs: "1rem", sm: "1.125rem" },
+                    }}
+                  >
                     {achievement.headline}
                   </Typography>
                   <Typography
                     variant="body2"
-                    sx={{ color: "text.secondary", lineHeight: 1.7 }}
+                    sx={{
+                      color: "text.secondary",
+                      lineHeight: 1.7,
+                      fontSize: { xs: "0.875rem", sm: "0.9375rem" },
+                    }}
                   >
                     {achievement.description}
                   </Typography>

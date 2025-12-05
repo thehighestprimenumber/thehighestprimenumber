@@ -50,6 +50,8 @@ export default function TechJobsModal({ technology, onClose }: TechJobsModalProp
             bgcolor: 'background.paper',
             border: '1px solid',
             borderColor: '#2a2a2a',
+            m: { xs: 1, sm: 2 },
+            maxHeight: { xs: '90vh', sm: '85vh' },
           },
         }}
       >

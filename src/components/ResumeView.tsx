@@ -14,6 +14,7 @@ import TimelineView from "./TimelineView";
 import TechJobsModal from "./TechJobsModal";
 import Section from "./Section";
 import NavButton from "./NavButton";
+import BottomNav from "./BottomNav";
 import ContactLink from "./ContactLink";
 import ProtectedEmailLink from "./ProtectedEmailLink";
 import { LinkedInIcon, GitHubIcon } from "./icons";
@@ -52,23 +53,31 @@ export default function ResumeView() {
 
   return (
     <Box
-      sx={{ display: "flex", gap: 4, minHeight: "calc(100vh - 100px)", p: 4 }}
+      sx={{
+        display: "flex",
+        flexDirection: { xs: "column", md: "row" },
+        gap: { xs: 2, md: 4 },
+        minHeight: "calc(100vh - 100px)",
+        p: { xs: 2, sm: 3, md: 4 },
+        pb: { xs: 10, md: 4 }, // Add padding bottom on mobile for bottom nav
+      }}
     >
       {/* Left Navigation Sidebar */}
       <Paper
         component="nav"
         sx={{
-          position: "sticky",
-          top: 100,
-          alignSelf: "flex-start",
-          width: 220,
+          position: { xs: "static", md: "sticky" },
+          top: { md: 100 },
+          alignSelf: { md: "flex-start" },
+          width: { xs: "100%", md: 220 },
           flexShrink: 0,
           bgcolor: "background.paper",
           border: "1px solid",
           borderColor: "#2a2a2a",
           borderRadius: "12px",
-          p: 3,
+          p: { xs: 2, md: 3 },
           height: "fit-content",
+          display: { xs: "none", md: "block" },
         }}
       >
         <List sx={{ p: 0 }}>
@@ -111,11 +120,7 @@ export default function ResumeView() {
         </Section>
 
         {/* Timeline Section */}
-        <Section
-          id="timeline"
-          alignItems="center"
-          scrollMarginTop="80px"
-        >
+        <Section id="timeline" alignItems="center" scrollMarginTop="80px">
           <Box sx={{ width: "100%" }}>
             <TimelineView onTechClick={setSelectedTech} />
           </Box>
@@ -129,10 +134,10 @@ export default function ResumeView() {
           justifyContent="flex-start"
           paddingBottom={4}
         >
-          <Stack gap={4} alignItems="center">
+          <Stack gap={{ xs: 3, md: 4 }} alignItems="center">
             <Stack
               direction="row"
-              spacing={4}
+              spacing={{ xs: 2, sm: 3, md: 4 }}
               flexWrap="wrap"
               justifyContent="center"
             >
@@ -149,7 +154,10 @@ export default function ResumeView() {
               >
                 GitHub
               </ContactLink>
-              <ContactLink href={resume.personal.website} icon={<Globe size={20} />}>
+              <ContactLink
+                href={resume.personal.website}
+                icon={<Globe size={20} />}
+              >
                 Website
               </ContactLink>
             </Stack>
@@ -164,6 +172,9 @@ export default function ResumeView() {
           onClose={() => setSelectedTech(null)}
         />
       )}
+
+      {/* Bottom Navigation (Mobile Only) */}
+      <BottomNav onScrollToSection={scrollToSection} />
     </Box>
   );
 }
