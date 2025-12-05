@@ -127,12 +127,15 @@ export default function ResumeView() {
           justifyContent="flex-start"
           paddingBottom={4}
         >
-          <Stack gap={{ xs: 3, md: 4 }} alignItems="center">
-            <Stack
-              direction="row"
-              spacing={{ xs: 2, sm: 3, md: 4 }}
-              flexWrap="wrap"
-              justifyContent="center"
+          <Stack gap={{ xs: 3, md: 4 }} alignItems="center" sx={{ width: "100%" }}>
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: { xs: "repeat(2, 1fr)", sm: "repeat(2, 1fr)", md: "repeat(4, auto)" },
+                gap: { xs: 2, sm: 3, md: 4 },
+                width: "100%",
+                maxWidth: { xs: "100%", md: "800px" },
+              }}
             >
               <ProtectedEmailLink />
               <ContactLink
@@ -153,7 +156,7 @@ export default function ResumeView() {
               >
                 Website
               </ContactLink>
-            </Stack>
+            </Box>
           </Stack>
         </Section>
       </Stack>
