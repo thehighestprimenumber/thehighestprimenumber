@@ -78,11 +78,7 @@ export async function generatePDFFromText(): Promise<void> {
   doc.line(margin, yPosition, pageWidth - margin, yPosition);
   yPosition += 0.3;
 
-  // Summary
-  addText("PROFESSIONAL SUMMARY", 12, true);
-  yPosition += 0.15;
-  addText(`${personal.summary} ${personal.summaryExtended}`, 10, false);
-  yPosition += 0.3;
+  // Note: Summary/Bio removed - it's now in the cover letter PDF
 
   // Technical Skills - displayed alphabetically with years of experience in columns
   addText("TECHNICAL SKILLS", 12, true);
