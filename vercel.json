@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/verify-recaptcha.ts": {
+      "maxDuration": 10
+    }
+  }
+}
+

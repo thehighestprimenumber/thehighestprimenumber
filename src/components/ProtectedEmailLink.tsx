@@ -21,12 +21,31 @@ export default function ProtectedEmailLink() {
       // Execute reCAPTCHA
       const token = await executeRecaptcha("reveal_email");
 
-      // Verify token (in a real app, you'd send this to your backend)
-      // For now, we'll just reveal the email after successful captcha
-      // In production, you should verify the token server-side
-      console.log("reCAPTCHA token:", token);
+      // Verify token with backend
+      const apiUrl = import.meta.env.VITE_RECAPTCHA_VERIFY_URL || "/api/verify-recaptcha";
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token }),
+      });
 
-      setEmailRevealed(true);
+      const data = await response.json();
+
+      if (data.success) {
+        // Token verified successfully, reveal email
+        setEmailRevealed(true);
+      } else {
+        // Verification failed
+        console.error("reCAPTCHA verification failed:", data);
+        console.error("Error codes:", data["error-codes"]);
+        console.error("Debug info:", data.debug);
+        if (data.message) {
+          console.error("Message:", data.message);
+        }
+        alert(`Verification failed: ${data.error || "Unknown error"}. ${data.message || ""} Please try again.`);
+      }
     } catch (error) {
       console.error("reCAPTCHA error:", error);
       alert("Failed to verify. Please try again.");
