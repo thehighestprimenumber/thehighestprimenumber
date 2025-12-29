@@ -13,10 +13,9 @@ export default function TechnologyCloud({ onTechClick }: TechnologyCloudProps) {
   const technologies = getTechnologiesByExperience();
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
 
-  // Sort alphabetically
-  const sortedTechnologies = [...technologies].sort((a, b) =>
-    a.technology.localeCompare(b.technology)
-  );
+  // Technologies are already sorted by years descending from getTechnologiesByExperience()
+  // Sort by years descending (most experienced first)
+  const sortedTechnologies = [...technologies].sort((a, b) => b.years - a.years);
 
   // Calculate max years for progress bar scaling
   const maxYears = Math.max(...technologies.map((t) => t.years));
@@ -26,9 +25,9 @@ export default function TechnologyCloud({ onTechClick }: TechnologyCloudProps) {
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: { xs: "1fr", lg: "1fr 1fr" },
+          gridTemplateColumns: { xs: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" },
           gap: 2,
-          pt: 2,
+          pt: 0,
           pb: 4,
         }}
       >

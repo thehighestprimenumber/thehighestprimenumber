@@ -1,6 +1,6 @@
 import jsPDF from "jspdf";
 import { resume } from "./resumeData";
-import { getTechnologiesByExperience, formatExperience } from "./techExperience";
+import { getTechnologiesByExperience, formatExperienceForPDF } from "./techExperience";
 import { getEmail } from "./emailObfuscation";
 
 /**
@@ -135,8 +135,8 @@ export async function generatePDFFromText(): Promise<void> {
 
   sortedTechnologies.forEach((tech, index) => {
     const colIndex = Math.floor(index / itemsPerColumn);
-    // Use clear text format instead of stars: "Technology (X years)"
-    const techEntry = `${tech.technology} (${formatExperience(tech.years)})`;
+    // Use clear text format: "Technology (<1yr)" or "Technology (Xyr)"
+    const techEntry = `${tech.technology} (${formatExperienceForPDF(tech.years)})`;
     if (colIndex < numColumns) {
       columns[colIndex].push(techEntry);
     }

@@ -118,6 +118,21 @@ export function formatExperience(years: number): string {
   return `${wholeYears}.${Math.floor((months / 12) * 10)} years`;
 }
 
+/**
+ * Format experience for PDF - uses "<1yr" instead of "X months" for <1 year
+ */
+export function formatExperienceForPDF(years: number): string {
+  if (years < 1) {
+    return "<1yr";
+  }
+  const wholeYears = Math.floor(years);
+  const months = Math.round((years - wholeYears) * 12);
+  if (months === 0) {
+    return `${wholeYears}yr`;
+  }
+  return `${wholeYears}.${Math.floor((months / 12) * 10)}yr`;
+}
+
 export function getTechnologiesByExperience(): TechExperience[] {
   const techMap = calculateTechExperience();
   return Array.from(techMap.values()).sort((a, b) => b.years - a.years);
