@@ -1,12 +1,6 @@
 import { resume } from "./resumeData";
-import { getTechnologiesByExperience } from "./techExperience";
+import { getTechnologiesByExperience, formatExperience } from "./techExperience";
 import { getEmail } from "./emailObfuscation";
-
-/**
- * Convert years of experience to star rating (one star per year, rounded up)
- */
-const yearsToStars = (years: number): string =>
-  "*".repeat(Math.max(5, Math.ceil(years)));
 
 /**
  * Convert JSON resume data to Markdown format
@@ -15,12 +9,12 @@ export function jsonToMarkdown(): string {
   const { personal, languages, experience } = resume;
   const technologies = getTechnologiesByExperience();
 
-  // Sort alphabetically and generate skills markdown with star ratings
+  // Sort alphabetically and generate skills markdown with clear text format
   const sortedTechnologies = [...technologies].sort((a, b) =>
     a.technology.localeCompare(b.technology)
   );
   const skillsList = sortedTechnologies
-    .map((tech) => `${tech.technology} ${yearsToStars(tech.years)}`)
+    .map((tech) => `${tech.technology} (${formatExperience(tech.years)})`)
     .join(", ");
 
   // Generate languages markdown
@@ -50,24 +44,23 @@ export function jsonToMarkdown(): string {
     personal.website
   }`;
 
+  // Harvard CV Format: Experience first, then Skills, then Languages
   return `# ${personal.name} - ${personal.title}
 
 ${contactInfo}
 
 ${personal.summary} ${personal.summaryExtended}
 
+## Professional Experience
 
+${experienceMarkdown}
 
-## Skills 
+## Technical Skills
 
 ${skillsList}
 
 ## Languages
 
 ${languagesList}
-
-## Experience
-
-${experienceMarkdown}
 `;
 }

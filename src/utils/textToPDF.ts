@@ -1,12 +1,7 @@
 import jsPDF from "jspdf";
 import { resume } from "./resumeData";
-import { getTechnologiesByExperience } from "./techExperience";
+import { getTechnologiesByExperience, formatExperience } from "./techExperience";
 import { getEmail } from "./emailObfuscation";
-
-/**
- * Convert years of experience to star rating (one star per year, rounded up)
- */
-const yearsToStars = (years: number): string => "*".repeat(Math.ceil(years));
 
 /**
  * Generate PDF directly from text using jsPDF (more reliable than html2canvas)
@@ -80,7 +75,45 @@ export async function generatePDFFromText(): Promise<void> {
 
   // Note: Summary/Bio removed - it's now in the cover letter PDF
 
-  // Technical Skills - displayed alphabetically with years of experience in columns
+  // Harvard CV Format: Experience first, then Skills, then Languages
+  
+  // PROFESSIONAL EXPERIENCE (comes first in Harvard format)
+  addText("PROFESSIONAL EXPERIENCE", 12, true);
+  yPosition += 0.15;
+
+  experience.forEach((exp) => {
+    // Check if we need a new page
+    if (yPosition > pageHeight - margin - 1) {
+      doc.addPage();
+      yPosition = margin;
+    }
+
+    // Role and company
+    addText(exp.role, 11, true);
+    addText(`${exp.company} | ${exp.period}`, 10, false);
+    yPosition += 0.1;
+
+    // Achievements
+    exp.achievements.forEach((achievement) => {
+      addText(
+        `• ${achievement.headline}. ${achievement.description}`,
+        10,
+        false
+      );
+    });
+
+    // Technologies
+    if (exp.technologies.length > 0) {
+      yPosition += 0.05;
+      addText(`Technologies: ${exp.technologies.join(", ")}`, 9, false);
+    }
+
+    yPosition += 0.3;
+  });
+
+  yPosition += 0.2; // Extra spacing after experience section
+
+  // TECHNICAL SKILLS (comes after Experience in Harvard format)
   addText("TECHNICAL SKILLS", 12, true);
   yPosition += 0.15;
 
@@ -102,7 +135,8 @@ export async function generatePDFFromText(): Promise<void> {
 
   sortedTechnologies.forEach((tech, index) => {
     const colIndex = Math.floor(index / itemsPerColumn);
-    const techEntry = `${tech.technology} ${yearsToStars(tech.years)}`;
+    // Use clear text format instead of stars: "Technology (X years)"
+    const techEntry = `${tech.technology} (${formatExperience(tech.years)})`;
     if (colIndex < numColumns) {
       columns[colIndex].push(techEntry);
     }
@@ -136,46 +170,11 @@ export async function generatePDFFromText(): Promise<void> {
 
   yPosition += 0.2; // Extra spacing after skills section
 
-  // Languages
+  // LANGUAGES (comes last in Harvard format)
   addText("LANGUAGES", 12, true);
   yPosition += 0.15;
   languages.forEach((lang) => {
     addText(`${lang.name}: ${lang.level}`, 10, false);
-  });
-  yPosition += 0.3;
-
-  // Experience
-  addText("PROFESSIONAL EXPERIENCE", 12, true);
-  yPosition += 0.15;
-
-  experience.forEach((exp) => {
-    // Check if we need a new page
-    if (yPosition > pageHeight - margin - 1) {
-      doc.addPage();
-      yPosition = margin;
-    }
-
-    // Role and company
-    addText(exp.role, 11, true);
-    addText(`${exp.company} | ${exp.period}`, 10, false);
-    yPosition += 0.1;
-
-    // Achievements
-    exp.achievements.forEach((achievement) => {
-      addText(
-        `• ${achievement.headline}. ${achievement.description}`,
-        10,
-        false
-      );
-    });
-
-    // Technologies
-    if (exp.technologies.length > 0) {
-      yPosition += 0.05;
-      addText(`Technologies: ${exp.technologies.join(", ")}`, 9, false);
-    }
-
-    yPosition += 0.3;
   });
 
   // Save PDF
