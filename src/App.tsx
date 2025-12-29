@@ -1,8 +1,11 @@
+import { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import ResumeView from "./components/ResumeView";
 import Header from "./components/Header";
 
 function App() {
+  const [activeSection, setActiveSection] = useState<string>("summary");
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -19,6 +22,41 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    const sections = ["summary", "technologies", "timeline", "contact"];
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -60% 0px",
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sections.forEach((sectionId) => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      sections.forEach((sectionId) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+    };
+  }, []);
+
   return (
     <Box
       sx={{
@@ -27,7 +65,7 @@ function App() {
         color: "text.primary",
       }}
     >
-      <Header onScrollToSection={scrollToSection} />
+      <Header onScrollToSection={scrollToSection} activeSection={activeSection} />
 
       <Box component="main">
         <ResumeView onScrollToSection={scrollToSection} />

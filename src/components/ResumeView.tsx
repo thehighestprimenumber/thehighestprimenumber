@@ -68,7 +68,7 @@ export default function ResumeView({ onScrollToSection }: ResumeViewProps) {
             textAlign="center"
             alignItems="center"
             justifyContent="flex-start"
-            py={8}
+            py={24}
             sx={{ minHeight: "auto" }}
           >
             <Stack

@@ -13,9 +13,10 @@ const navigationItems = [
 
 interface HeaderProps {
   onScrollToSection: (sectionId: string) => void;
+  activeSection: string;
 }
 
-export default function Header({ onScrollToSection }: HeaderProps) {
+export default function Header({ onScrollToSection, activeSection }: HeaderProps) {
   const [mobileMenuAnchor, setMobileMenuAnchor] = useState<null | HTMLElement>(null);
   const mobileMenuOpen = Boolean(mobileMenuAnchor);
 
@@ -83,21 +84,26 @@ export default function Header({ onScrollToSection }: HeaderProps) {
           >
             {navigationItems.map((item) => {
               const Icon = item.icon;
+              const isActive = activeSection === item.id;
               return (
                 <Button
                   key={item.id}
                   onClick={() => onScrollToSection(item.id)}
                   startIcon={<Icon size={18} />}
                   sx={{
-                    color: "text.secondary",
+                    color: isActive ? "text.primary" : "text.secondary",
                     fontSize: { sm: "0.8125rem", md: "0.9375rem" },
                     px: { sm: 1, md: 1.5 },
                     py: { sm: 0.5, md: 0.75 },
                     minWidth: "auto",
                     whiteSpace: "nowrap",
                     flexShrink: 0,
+                    fontWeight: isActive ? 600 : 400,
+                    bgcolor: isActive ? "rgba(76, 175, 80, 0.1)" : "transparent",
+                    borderBottom: isActive ? "2px solid" : "2px solid transparent",
+                    borderColor: isActive ? "primary.main" : "transparent",
                     "&:hover": {
-                      bgcolor: "#1a1a1a",
+                      bgcolor: isActive ? "rgba(76, 175, 80, 0.15)" : "#1a1a1a",
                       color: "text.primary",
                     },
                   }}
@@ -153,14 +159,17 @@ export default function Header({ onScrollToSection }: HeaderProps) {
           >
             {navigationItems.map((item) => {
               const Icon = item.icon;
+              const isActive = activeSection === item.id;
               return (
                 <MenuItem
                   key={item.id}
                   onClick={() => handleMobileNavClick(item.id)}
                   sx={{
-                    color: "text.secondary",
+                    color: isActive ? "text.primary" : "text.secondary",
+                    bgcolor: isActive ? "rgba(76, 175, 80, 0.1)" : "transparent",
+                    fontWeight: isActive ? 600 : 400,
                     "&:hover": {
-                      bgcolor: "#1a1a1a",
+                      bgcolor: isActive ? "rgba(76, 175, 80, 0.15)" : "#1a1a1a",
                       color: "text.primary",
                     },
                   }}
