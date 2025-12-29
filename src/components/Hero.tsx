@@ -16,27 +16,47 @@ export default function Hero({ onScrollToSection }: HeroProps) {
       sx={{
         position: "relative",
         width: "100%",
-        height: { xs: "calc(100vh - 64px)", sm: "calc(100vh - 72px)", md: "calc(100vh - 80px)" },
+        height: {
+          xs: "calc(100vh - 64px)",
+          sm: "calc(100vh - 72px)",
+          md: "calc(100vh - 80px)",
+        },
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         px: { xs: 2, sm: 3, md: 4 },
-        backgroundImage: `url(${heroImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
         borderBottom: "1px solid",
         borderColor: "#2a2a2a",
         overflow: "hidden",
         "&::before": {
           content: '""',
           position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: "linear-gradient(135deg, rgba(18, 18, 18, 0.85) 0%, rgba(26, 26, 26, 0.75) 100%)",
-          pointerEvents: "none",
+          top: "-10%",
+          left: "-10%",
+          width: "120%",
+          height: "120%",
+          backgroundImage: `url(${heroImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          animation: "kenBurns 30s ease-in-out infinite",
+          "@keyframes kenBurns": {
+            "0%": {
+              transform: "scale(1) translate(0, 0)",
+            },
+            "25%": {
+              transform: "scale(1.15) translate(-3%, -2%)",
+            },
+            "50%": {
+              transform: "scale(1.2) translate(2%, 3%)",
+            },
+            "75%": {
+              transform: "scale(1.1) translate(-2%, 1%)",
+            },
+            "100%": {
+              transform: "scale(1) translate(0, 0)",
+            },
+          },
         },
         "&::after": {
           content: '""',
@@ -45,12 +65,36 @@ export default function Hero({ onScrollToSection }: HeroProps) {
           left: 0,
           right: 0,
           bottom: 0,
-          background: "radial-gradient(circle at 20% 50%, rgba(76, 175, 80, 0.1) 0%, transparent 50%)",
+          background:
+            "linear-gradient(135deg, rgba(18, 18, 18, 0.85) 0%, rgba(26, 26, 26, 0.75) 100%)",
           pointerEvents: "none",
+          zIndex: 1,
         },
       }}
     >
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, height: "100%", display: "flex", alignItems: "center" }}>
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background:
+            "radial-gradient(circle at 20% 50%, rgba(76, 175, 80, 0.1) 0%, transparent 50%)",
+          pointerEvents: "none",
+          zIndex: 2,
+        }}
+      />
+      <Container
+        maxWidth="lg"
+        sx={{
+          position: "relative",
+          zIndex: 3,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <Stack
           spacing={{ xs: 2, sm: 2.5, md: 3 }}
           alignItems="center"
@@ -78,7 +122,12 @@ export default function Hero({ onScrollToSection }: HeroProps) {
           <Typography
             variant="h2"
             sx={{
-              fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem", lg: "1.75rem" },
+              fontSize: {
+                xs: "1rem",
+                sm: "1.25rem",
+                md: "1.5rem",
+                lg: "1.75rem",
+              },
               fontWeight: 400,
               color: "text.secondary",
               letterSpacing: "0.05em",
@@ -100,7 +149,8 @@ export default function Hero({ onScrollToSection }: HeroProps) {
               px: { xs: 2, sm: 0 },
             }}
           >
-            Building scalable systems and impactful digital products with thoughtful engineering
+            Building scalable systems and impactful digital products with
+            thoughtful engineering
           </Typography>
 
           {/* CTA Buttons */}
@@ -133,8 +183,8 @@ export default function Hero({ onScrollToSection }: HeroProps) {
             >
               Explore My Work
             </Button>
-            <Box 
-              sx={{ 
+            <Box
+              sx={{
                 display: { xs: "none", sm: "block" },
                 "& .MuiButton-root": {
                   px: { xs: 4, sm: 5 },
@@ -187,7 +237,10 @@ export default function Hero({ onScrollToSection }: HeroProps) {
             >
               Scroll to explore
             </Typography>
-            <ArrowDown size={20} style={{ color: "rgba(255, 255, 255, 0.5)" }} />
+            <ArrowDown
+              size={20}
+              style={{ color: "rgba(255, 255, 255, 0.5)" }}
+            />
           </Box>
         </Stack>
       </Container>
