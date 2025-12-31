@@ -39,6 +39,10 @@
         {
           "headline": "Developed a React proof-of-concept (PoC) template leveraging the company's frontend components library",
           "description": "Created a library of core components to be used in the development of PoCs, ensuring consistency across teams. Successfully delivered a production-grade PoC using the new template, improving turnaround time for experimental feature development."
+        },
+        {
+          "headline": "Integrated LLM APIs in synchronous and asynchronous manners",
+          "description": "Consumed and integrated LLM APIs into the HIAP Platform backend. Implemented both synchronous and asynchronous LLM service calls for real-time climate action prioritization and action plan generation. Designed data storage strategies to persist LLM responses in databases for cached access."
         }
       ],
       "technologies": ["JavaScript", "TypeScript", "React", "SQL", "AWS"]
